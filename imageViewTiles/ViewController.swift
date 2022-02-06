@@ -9,12 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var holeTGR: UITapGestureRecognizer!
     
-    @IBOutlet weak var tile00: UIImageView!
-    
-    @IBOutlet weak var tile01: UIImageView!
-    
-    @IBOutlet weak var tile05: UIImageView!
+    @IBOutlet weak var hole: UIImageView!
     
     
     override func viewDidLoad() {
@@ -24,26 +21,58 @@ class ViewController: UIViewController {
 
 
     @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
+        
         guard sender.view != nil else { return }
         
-        guard let view = sender.view else { return }
-        
-        if view.tag == 11 {
-            print ("blank view was tapped")
-            var fromFrame = view.center
-            guard let moveToView = tile01 else { return }
-            var toFrame = moveToView.center
-            
-            view.center = toFrame
-            moveToView.center = fromFrame
-        }
+        guard let view = sender.view as? UIImageView else { return }
         
         print ("Tile tag that was tapped is \(sender.view!.tag)")
         
-        if sender.view!.tag == 11 {
-            print("Tile 1,1 was tapped" )
-            
+        if sender == holeTGR {
+            print("hole was tapped")
+        } else {
+            print("Tile \(sender.view!.tag) was tapped")
+            print("x coord = \(view.frame.origin.x) and y coord = \(view.frame.origin.y)")
         }
+        
+        let originX = view.frame.origin.x
+        let originY = view.frame.origin.y
+        
+        let holeX = hole.frame.origin.x
+        let holeY = hole.frame.origin.y
+        
+        #warning("Move this code to a move func!")
+        if originX - 93 == holeX {
+            print ("I am to the right of the hole, good move")
+            // Swap function starts here
+            view.frame.origin.x = holeX
+            view.frame.origin.y = holeY
+            hole.frame.origin.x = originX
+            hole.frame.origin.y = originY
+        } else if originX + 93 == holeX {
+            print ("I am to the left of the hole, good move")
+            // Swap function starts here
+            view.frame.origin.x = holeX
+            view.frame.origin.y = holeY
+            hole.frame.origin.x = originX
+            hole.frame.origin.y = originY
+        } else if originY - 93 == holeY {
+            print ("I am below the hole, good move")
+            // Swap function starts here
+            view.frame.origin.x = holeX
+            view.frame.origin.y = holeY
+            hole.frame.origin.x = originX
+            hole.frame.origin.y = originY
+        } else if originY + 93 == holeY {
+            print ("I am above the hole, good move")
+            // Swap function starts here
+            view.frame.origin.x = holeX
+            view.frame.origin.y = holeY
+            hole.frame.origin.x = originX
+            hole.frame.origin.y = originY
+        }
+        
+        
     }
     
     
