@@ -149,7 +149,7 @@
                         <action selector="tapHandler:" destination="BYZ-38-t0r" id="AGk-GQ-gpw"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="JSa-Js-vva" userLabel="tile05TGR">
+                <tapGestureRecognizer id="JSa-Js-vva" userLabel="tile10TGR">
                     <connections>
                         <action selector="tapHandler:" destination="BYZ-38-t0r" id="iwx-5l-dAD"/>
                     </connections>
