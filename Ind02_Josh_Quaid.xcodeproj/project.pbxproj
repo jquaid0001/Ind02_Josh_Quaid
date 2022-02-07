@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DD74EFC227AF65DD002D7CB9 /* imageViewTiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imageViewTiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD74EFC227AF65DD002D7CB9 /* Ind02_Josh_Quaid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ind02_Josh_Quaid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD74EFC527AF65DD002D7CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD74EFC727AF65DD002D7CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DD74EFC927AF65DD002D7CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		DD74EFB927AF65DD002D7CB9 = {
 			isa = PBXGroup;
 			children = (
-				DD74EFC427AF65DD002D7CB9 /* imageViewTiles */,
+				DD74EFC427AF65DD002D7CB9 /* Ind02_Josh_Quaid */,
 				DD74EFC327AF65DD002D7CB9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		DD74EFC327AF65DD002D7CB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD74EFC227AF65DD002D7CB9 /* imageViewTiles.app */,
+				DD74EFC227AF65DD002D7CB9 /* Ind02_Josh_Quaid.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DD74EFC427AF65DD002D7CB9 /* imageViewTiles */ = {
+		DD74EFC427AF65DD002D7CB9 /* Ind02_Josh_Quaid */ = {
 			isa = PBXGroup;
 			children = (
 				DD74EFC527AF65DD002D7CB9 /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				DD74EFD027AF65DE002D7CB9 /* LaunchScreen.storyboard */,
 				DD74EFD327AF65DE002D7CB9 /* Info.plist */,
 			);
-			path = imageViewTiles;
+			path = Ind02_Josh_Quaid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD74EFC127AF65DD002D7CB9 /* imageViewTiles */ = {
+		DD74EFC127AF65DD002D7CB9 /* Ind02_Josh_Quaid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD74EFD627AF65DE002D7CB9 /* Build configuration list for PBXNativeTarget "imageViewTiles" */;
+			buildConfigurationList = DD74EFD627AF65DE002D7CB9 /* Build configuration list for PBXNativeTarget "Ind02_Josh_Quaid" */;
 			buildPhases = (
 				DD74EFBE27AF65DD002D7CB9 /* Sources */,
 				DD74EFBF27AF65DD002D7CB9 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = imageViewTiles;
+			name = Ind02_Josh_Quaid;
 			productName = imageViewTiles;
-			productReference = DD74EFC227AF65DD002D7CB9 /* imageViewTiles.app */;
+			productReference = DD74EFC227AF65DD002D7CB9 /* Ind02_Josh_Quaid.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DD74EFBD27AF65DD002D7CB9 /* Build configuration list for PBXProject "imageViewTiles" */;
+			buildConfigurationList = DD74EFBD27AF65DD002D7CB9 /* Build configuration list for PBXProject "Ind02_Josh_Quaid" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD74EFC127AF65DD002D7CB9 /* imageViewTiles */,
+				DD74EFC127AF65DD002D7CB9 /* Ind02_Josh_Quaid */,
 			);
 		};
 /* End PBXProject section */
@@ -290,7 +290,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = imageViewTiles/Info.plist;
+				INFOPLIST_FILE = Ind02_Josh_Quaid/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -301,7 +301,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jquaid0001.imageViewTiles;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jquaid0001.Ind02_Josh_Quaid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -317,7 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = imageViewTiles/Info.plist;
+				INFOPLIST_FILE = Ind02_Josh_Quaid/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -328,7 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jquaid0001.imageViewTiles;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jquaid0001.Ind02_Josh_Quaid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -339,7 +339,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DD74EFBD27AF65DD002D7CB9 /* Build configuration list for PBXProject "imageViewTiles" */ = {
+		DD74EFBD27AF65DD002D7CB9 /* Build configuration list for PBXProject "Ind02_Josh_Quaid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD74EFD427AF65DE002D7CB9 /* Debug */,
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD74EFD627AF65DE002D7CB9 /* Build configuration list for PBXNativeTarget "imageViewTiles" */ = {
+		DD74EFD627AF65DE002D7CB9 /* Build configuration list for PBXNativeTarget "Ind02_Josh_Quaid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD74EFD727AF65DE002D7CB9 /* Debug */,
