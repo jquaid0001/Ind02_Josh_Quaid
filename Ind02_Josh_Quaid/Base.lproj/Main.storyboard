@@ -11,11 +11,38 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="imageViewTiles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TileGameVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Ind02_Josh_Quaid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emptyTile" translatesAutoresizingMaskIntoConstraints="NO" id="Af6-ZH-nOb" userLabel="hole">
+                                <rect key="frame" x="20" y="169" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wUz-TE-XS2" appends="YES" id="wss-86-xws"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="12" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles02" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-eF-tk5" userLabel="01">
+                                <rect key="frame" x="113" y="169" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sMD-Ah-fNu" appends="YES" id="dal-uf-SZ8"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="13" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hercTiles03" id="Byf-dm-M36" userLabel="02">
+                                <rect key="frame" x="206" y="169" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PHT-Dl-hWj" appends="YES" id="QPu-Ey-vOt"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="14" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles04" translatesAutoresizingMaskIntoConstraints="NO" id="Ui5-TB-Ryf" userLabel="03">
+                                <rect key="frame" x="299" y="169" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" tag="21" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles05" translatesAutoresizingMaskIntoConstraints="NO" id="eRh-HS-em0" userLabel="10">
                                 <rect key="frame" x="20" y="262" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -34,37 +61,28 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="11" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="emptyTile" translatesAutoresizingMaskIntoConstraints="NO" id="Af6-ZH-nOb" userLabel="hole">
-                                <rect key="frame" x="20" y="169" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="wUz-TE-XS2" appends="YES" id="wss-86-xws"/>
-                                </connections>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="13" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hercTiles03" id="Byf-dm-M36" userLabel="02">
-                                <rect key="frame" x="206" y="169" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="PHT-Dl-hWj" appends="YES" id="QPu-Ey-vOt"/>
-                                </connections>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="12" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles02" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-eF-tk5" userLabel="01">
-                                <rect key="frame" x="113" y="169" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="sMD-Ah-fNu" appends="YES" id="dal-uf-SZ8"/>
-                                </connections>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="14" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles04" translatesAutoresizingMaskIntoConstraints="NO" id="Ui5-TB-Ryf" userLabel="03">
-                                <rect key="frame" x="299" y="169" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" tag="24" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles08" translatesAutoresizingMaskIntoConstraints="NO" id="xZ5-yF-eFb" userLabel="13">
                                 <rect key="frame" x="299" y="262" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="20" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles09" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-Bh-BqZ" userLabel="20">
+                                <rect key="frame" x="20" y="355" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="21" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles10" translatesAutoresizingMaskIntoConstraints="NO" id="m3A-e1-oKx" userLabel="21">
+                                <rect key="frame" x="113" y="355" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="22" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hercTiles11" id="dgW-3U-F1V" userLabel="22">
+                                <rect key="frame" x="206" y="355" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" tag="23" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles12" translatesAutoresizingMaskIntoConstraints="NO" id="lke-IK-P71" userLabel="23">
+                                <rect key="frame" x="299" y="355" width="93" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" tag="41" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles13" translatesAutoresizingMaskIntoConstraints="NO" id="jKC-Ff-xux" userLabel="30">
                                 <rect key="frame" x="20" y="448" width="93" height="93"/>
@@ -81,35 +99,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="31" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles09" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-Bh-BqZ" userLabel="hole">
-                                <rect key="frame" x="20" y="355" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="33" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hercTiles11" id="dgW-3U-F1V" userLabel="22">
-                                <rect key="frame" x="206" y="355" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="32" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles10" translatesAutoresizingMaskIntoConstraints="NO" id="m3A-e1-oKx" userLabel="21">
-                                <rect key="frame" x="113" y="355" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="34" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles12" translatesAutoresizingMaskIntoConstraints="NO" id="lke-IK-P71" userLabel="23">
-                                <rect key="frame" x="299" y="355" width="93" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" tag="44" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles16" translatesAutoresizingMaskIntoConstraints="NO" id="1tg-LP-llV" userLabel="33">
+                            <imageView clipsSubviews="YES" tag="33" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles16" translatesAutoresizingMaskIntoConstraints="NO" id="1tg-LP-llV" userLabel="33">
                                 <rect key="frame" x="299" y="448" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="51" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles17" translatesAutoresizingMaskIntoConstraints="NO" id="0Gm-rJ-CV5" userLabel="40">
+                            <imageView clipsSubviews="YES" tag="40" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles17" translatesAutoresizingMaskIntoConstraints="NO" id="0Gm-rJ-CV5" userLabel="40">
                                 <rect key="frame" x="22" y="540" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView clipsSubviews="YES" tag="52" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles18" translatesAutoresizingMaskIntoConstraints="NO" id="Ejz-VB-uOy" userLabel="41">
+                            <imageView clipsSubviews="YES" tag="41" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hercTiles18" translatesAutoresizingMaskIntoConstraints="NO" id="Ejz-VB-uOy" userLabel="41">
                                 <rect key="frame" x="115" y="540" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -124,6 +124,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52U-7W-vRH">
+                                <rect key="frame" x="107" y="680" width="201" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Show Answer">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FNz-cx-xmW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -131,6 +142,27 @@
                     <connections>
                         <outlet property="hole" destination="Af6-ZH-nOb" id="Fjo-vO-3PP"/>
                         <outlet property="holeTGR" destination="wUz-TE-XS2" id="7pL-lh-TBQ"/>
+                        <outlet property="solutionButton" destination="52U-7W-vRH" id="hz8-i2-ppe"/>
+                        <outletCollection property="tileCollection" destination="Af6-ZH-nOb" collectionClass="NSMutableArray" id="Xx9-me-ohx"/>
+                        <outletCollection property="tileCollection" destination="d8z-eF-tk5" collectionClass="NSMutableArray" id="MOC-dv-Stk"/>
+                        <outletCollection property="tileCollection" destination="Byf-dm-M36" collectionClass="NSMutableArray" id="acR-al-PLY"/>
+                        <outletCollection property="tileCollection" destination="Ui5-TB-Ryf" collectionClass="NSMutableArray" id="AkH-cO-TN8"/>
+                        <outletCollection property="tileCollection" destination="eRh-HS-em0" collectionClass="NSMutableArray" id="9yx-ox-G6P"/>
+                        <outletCollection property="tileCollection" destination="UIo-QC-dXG" collectionClass="NSMutableArray" id="Y7O-YZ-QWs"/>
+                        <outletCollection property="tileCollection" destination="b4h-qP-tD3" collectionClass="NSMutableArray" id="6Ne-wr-WGE"/>
+                        <outletCollection property="tileCollection" destination="xZ5-yF-eFb" collectionClass="NSMutableArray" id="5aK-Z7-nJk"/>
+                        <outletCollection property="tileCollection" destination="yPN-Bh-BqZ" collectionClass="NSMutableArray" id="8Tq-Gb-xds"/>
+                        <outletCollection property="tileCollection" destination="m3A-e1-oKx" collectionClass="NSMutableArray" id="nS6-si-mAc"/>
+                        <outletCollection property="tileCollection" destination="dgW-3U-F1V" collectionClass="NSMutableArray" id="54B-IW-vHE"/>
+                        <outletCollection property="tileCollection" destination="lke-IK-P71" collectionClass="NSMutableArray" id="8f1-0X-6tE"/>
+                        <outletCollection property="tileCollection" destination="jKC-Ff-xux" collectionClass="NSMutableArray" id="fZI-1W-LYu"/>
+                        <outletCollection property="tileCollection" destination="laf-uW-C1h" collectionClass="NSMutableArray" id="pjv-g1-kzT"/>
+                        <outletCollection property="tileCollection" destination="Ef9-CY-uy1" collectionClass="NSMutableArray" id="1hm-Ev-i8d"/>
+                        <outletCollection property="tileCollection" destination="1tg-LP-llV" collectionClass="NSMutableArray" id="4xS-Ap-ULz"/>
+                        <outletCollection property="tileCollection" destination="0Gm-rJ-CV5" collectionClass="NSMutableArray" id="hFD-LH-xIR"/>
+                        <outletCollection property="tileCollection" destination="Ejz-VB-uOy" collectionClass="NSMutableArray" id="T43-xY-gGc"/>
+                        <outletCollection property="tileCollection" destination="NHd-dm-tcm" collectionClass="NSMutableArray" id="hEh-Px-eLY"/>
+                        <outletCollection property="tileCollection" destination="fFe-Zk-ITL" collectionClass="NSMutableArray" id="utf-fO-vwF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

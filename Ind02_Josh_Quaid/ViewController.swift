@@ -9,13 +9,45 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    struct TileCoord{
+        var x: CGFloat
+        var y: CGFloat
+        
+        init() {
+            x = 0
+            y = 0
+        }
+    }
+    var defaultTileCoords: [TileCoord] = []
+    
+    @IBOutlet var tileCollection: [UIImageView]!
     
     @IBOutlet var holeTGR: UITapGestureRecognizer!
     @IBOutlet weak var hole: UIImageView!
     
+    // Button outlets
+    @IBOutlet weak var solutionButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        for i in tileCollection.indices {
+            var tileLoc = TileCoord()
+            tileLoc.x = tileCollection[i].frame.origin.x
+            tileLoc.y = tileCollection[i].frame.origin.y
+            defaultTileCoords.append(tileLoc)
+        }
+        
+        for tile in defaultTileCoords {
+            print("x = \(tile.x) and y = \(tile.y)")
+        }
+        // set a var for setting NSUserDefaults
+        //let defaults = UserDefaults.standard
+        // Set the default tileCollection state for restoration
+        //defaults.set(defaultTileCoords, forKey: "defaultTileState")
     }
 
     // Function for checking if a move is legal (tapped tile is
@@ -62,7 +94,22 @@ class ViewController: UIViewController {
         return false
     }
     
-
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        if sender == solutionButton {
+            guard let buttonText = sender.titleLabel?.text else { return }
+            print("button text is \(buttonText)")
+            if buttonText == "Show Answer" {
+                for i in tileCollection.indices {
+                    tileCollection[i].frame.origin.x = defaultTileCoords[i].x
+                    tileCollection[i].frame.origin.y = defaultTileCoords[i].y
+                }
+                sender.setTitle("Hide Answer", for: .normal)
+            } else {
+                sender.setTitle("Show Answer", for: .normal)
+            }
+        }
+    }
+    
     @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
         
         guard sender.view != nil else { return }
