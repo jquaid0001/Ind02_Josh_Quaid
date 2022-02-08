@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         }
     }
     var defaultTileCoords: [TileCoord] = []
+    var userTileCoords: [TileCoord] = []
     
     @IBOutlet var tileCollection: [UIImageView]!
     
@@ -40,14 +41,6 @@ class ViewController: UIViewController {
             tileLoc.y = tileCollection[i].frame.origin.y
             defaultTileCoords.append(tileLoc)
         }
-        
-        for tile in defaultTileCoords {
-            print("x = \(tile.x) and y = \(tile.y)")
-        }
-        // set a var for setting NSUserDefaults
-        //let defaults = UserDefaults.standard
-        // Set the default tileCollection state for restoration
-        //defaults.set(defaultTileCoords, forKey: "defaultTileState")
     }
 
     // Function for checking if a move is legal (tapped tile is
@@ -98,13 +91,26 @@ class ViewController: UIViewController {
         if sender == solutionButton {
             guard let buttonText = sender.titleLabel?.text else { return }
             print("button text is \(buttonText)")
+            
             if buttonText == "Show Answer" {
+                userTileCoords.removeAll()
+                for i in tileCollection.indices {
+                    var tileLoc = TileCoord()
+                    tileLoc.x = tileCollection[i].frame.origin.x
+                    tileLoc.y = tileCollection[i].frame.origin.y
+                    userTileCoords.append(tileLoc)
+                }
+                
                 for i in tileCollection.indices {
                     tileCollection[i].frame.origin.x = defaultTileCoords[i].x
                     tileCollection[i].frame.origin.y = defaultTileCoords[i].y
                 }
                 sender.setTitle("Hide Answer", for: .normal)
             } else {
+                for i in tileCollection.indices {
+                    tileCollection[i].frame.origin.x = userTileCoords[i].x
+                    tileCollection[i].frame.origin.y = userTileCoords[i].y
+                }
                 sender.setTitle("Show Answer", for: .normal)
             }
         }
