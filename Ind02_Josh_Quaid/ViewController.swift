@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     @IBOutlet var holeTGR: UITapGestureRecognizer!
     @IBOutlet weak var hole: UIImageView!
     
+    var holeInitCenter: CGPoint?
+    
+    
     // Button outlets
     @IBOutlet weak var solutionButton: UIButton!
     
@@ -34,6 +37,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        holeInitCenter = hole.center
         
         for i in tileCollection.indices {
             let tileLoc = TileCoord(
@@ -112,25 +116,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
-        
-        guard sender.view != nil else { return }
-        
+        // Create a tile variable for use in tapHandler to guard against
+        // any nil senders
         guard let tile = sender.view as? UIImageView else { return }
         
-        print ("Tile tag that was tapped is \(sender.view!.tag)")
-        
-        if sender == holeTGR {
-            print("hole was tapped")
-        } else {
-            print("Tile \(sender.view!.tag) was tapped")
-            print("x coord = \(tile.frame.origin.x) and y coord = \(tile.frame.origin.y)")
-        }
-        
-        
+        // Create a boolean to store the result of the call to swapTiles
         let tileDidMove : Bool = swapTiles(tappedTile: tile)
         
-        if tileDidMove {
-            print("Tile moved, add some code here for checking solved")
+        // If the tile was swapped, check if hole is in solved position,
+        // if it isn't there is no need to check for the solution.
+        if tileDidMove && hole.center == holeInitCenter {
+            print("Hole is in solved position add code to check for solution")
         }
     }
 }
