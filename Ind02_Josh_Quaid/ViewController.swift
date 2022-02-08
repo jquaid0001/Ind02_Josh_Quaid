@@ -13,9 +13,9 @@ class ViewController: UIViewController {
         var x: CGFloat
         var y: CGFloat
         
-        init() {
-            x = 0
-            y = 0
+        init(x: CGFloat, y: CGFloat) {
+            self.x = x
+            self.y = y
         }
     }
     var defaultTileCoords: [TileCoord] = []
@@ -36,9 +36,9 @@ class ViewController: UIViewController {
         
         
         for i in tileCollection.indices {
-            var tileLoc = TileCoord()
-            tileLoc.x = tileCollection[i].frame.origin.x
-            tileLoc.y = tileCollection[i].frame.origin.y
+            let tileLoc = TileCoord(
+                x: tileCollection[i].frame.origin.x,
+                y: tileCollection[i].frame.origin.y)
             defaultTileCoords.append(tileLoc)
         }
     }
@@ -54,10 +54,8 @@ class ViewController: UIViewController {
         // Tiles are on the same column, check up and down
         if originX == holeX {
             if originY - 93 == holeY {
-                print ("I am below the hole, good move")
                 return true
             } else if originY + 93 == holeY {
-                print ("I am above the hole, good move")
                 return true
             }
         }
@@ -65,10 +63,8 @@ class ViewController: UIViewController {
         // Tiles are on the same row, check left and right
         if originY == holeY {
             if originX - 93 == holeX {
-                print ("I am to the right of the hole, good move")
                 return true
             } else if originX + 93 == holeX {
-                print ("I am to the left of the hole, good move")
                 return true
             }
         }
@@ -90,14 +86,13 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         if sender == solutionButton {
             guard let buttonText = sender.titleLabel?.text else { return }
-            print("button text is \(buttonText)")
             
             if buttonText == "Show Answer" {
                 userTileCoords.removeAll()
                 for i in tileCollection.indices {
-                    var tileLoc = TileCoord()
-                    tileLoc.x = tileCollection[i].frame.origin.x
-                    tileLoc.y = tileCollection[i].frame.origin.y
+                    let tileLoc = TileCoord(
+                        x: tileCollection[i].frame.origin.x,
+                        y: tileCollection[i].frame.origin.y)
                     userTileCoords.append(tileLoc)
                 }
                 
