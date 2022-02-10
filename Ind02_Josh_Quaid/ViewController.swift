@@ -31,11 +31,14 @@ class ViewController: UIViewController {
     
     // Button outlets
     @IBOutlet weak var solutionButton: UIButton!
+    @IBOutlet weak var shuffleButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
         
         holeInitCenter = hole.center
         
@@ -112,6 +115,9 @@ class ViewController: UIViewController {
                 }
                 sender.setTitle("Show Answer", for: .normal)
             }
+            
+        } else if sender == shuffleButton {
+            print("shuffle tapped, add code to shuffle tiles")
         }
     }
     
