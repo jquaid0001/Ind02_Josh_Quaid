@@ -18,13 +18,13 @@ class ViewController: UIViewController {
             self.y = y
         }
     }
-    var defaultTileCoords: [TileCoord] = []
-    var userTileCoords: [TileCoord] = []
+    var defaultTileCoords: [CGRect] = []
+    var userTileCoords: [CGRect] = []
     
     @IBOutlet var tileCollection: [UIImageView]!
+    @IBOutlet weak var hole: UIImageView!
     
     @IBOutlet var holeTGR: UITapGestureRecognizer!
-    @IBOutlet weak var hole: UIImageView!
     
     var holeInitCenter: CGPoint?
     
@@ -38,16 +38,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
         holeInitCenter = hole.center
         
         for i in tileCollection.indices {
-            let tileLoc = TileCoord(
-                x: tileCollection[i].frame.origin.x,
-                y: tileCollection[i].frame.origin.y)
-            defaultTileCoords.append(tileLoc)
+            defaultTileCoords.append(tileCollection[i].frame)
         }
+
     }
 
     // Function for checking if a move is legal (tapped tile is
@@ -82,45 +78,71 @@ class ViewController: UIViewController {
     // proceeding
     func swapTiles(tappedTile: UIImageView) -> Bool{
         if isMoveLegal(tappedTile: tappedTile.self) {
+            // Set up a temporary variable to hold the tag
+            let tappedTag = tappedTile.self.tag
+            // Set up a temporary variable to hold the frame
             let tappedFrame = tappedTile.self.frame
+            // Set the tapped tile's frame to the hole's frame
             tappedTile.self.frame = hole.frame
+            // Set the tapped tile's tag to the hole's tag
+            tappedTile.self.tag = hole.tag
+            // Set the hole's frame to the tapped frame
             hole.frame = tappedFrame
+            // Set the hole's tag to the tapped tag
+            hole.tag = tappedTag
+
             return true
         }
+        // The tiles were not swapped due to an illegal move
         return false
     }
     
+    // MARK: - Handlers
+    
+    // Handler for the shuffle and show answer buttons
     @IBAction func buttonTapped(_ sender: UIButton) {
         if sender == solutionButton {
             guard let buttonText = sender.titleLabel?.text else { return }
             
             if buttonText == "Show Answer" {
+                // If userTileCoords has an elements from
+                // previous button taps, clear them out
                 userTileCoords.removeAll()
+                
+                // Copy current tile frames to userTileCoords
+                // for restoration
                 for i in tileCollection.indices {
-                    let tileLoc = TileCoord(
-                        x: tileCollection[i].frame.origin.x,
-                        y: tileCollection[i].frame.origin.y)
-                    userTileCoords.append(tileLoc)
+                    userTileCoords.append(tileCollection[i].frame)
+                }
+  
+                // Restore the default state and show the solved
+                // puzzle
+                for i in tileCollection.indices {
+                    tileCollection[i].frame = defaultTileCoords[i]
                 }
                 
-                for i in tileCollection.indices {
-                    tileCollection[i].frame.origin.x = defaultTileCoords[i].x
-                    tileCollection[i].frame.origin.y = defaultTileCoords[i].y
-                }
+                // Set the button's text to Hide Answer
                 sender.setTitle("Hide Answer", for: .normal)
             } else {
+                // Restore the userTileCoors array to restore
+                // the user state
                 for i in tileCollection.indices {
-                    tileCollection[i].frame.origin.x = userTileCoords[i].x
-                    tileCollection[i].frame.origin.y = userTileCoords[i].y
+                    tileCollection[i].frame = userTileCoords[i]
                 }
+                // Set the buton's text to Show Answer
                 sender.setTitle("Show Answer", for: .normal)
             }
-            
-        } else if sender == shuffleButton {
+        }
+        
+        // If sender is shuffleButton shuffle the tiles by
+        // calling shuffleTiles()
+        if sender == shuffleButton {
             print("shuffle tapped, add code to shuffle tiles")
         }
     }
     
+    
+    // Handler for the UIImageView tiles
     @IBAction func tapHandler(_ sender: UITapGestureRecognizer) {
         // Create a tile variable for use in tapHandler to guard against
         // any nil senders
@@ -133,6 +155,25 @@ class ViewController: UIViewController {
         // if it isn't there is no need to check for the solution.
         if tileDidMove && hole.center == holeInitCenter {
             print("Hole is in solved position add code to check for solution")
+            for view in tileCollection {
+                print(view.tag)
+            }
+            
+            var solved : Bool = true
+            for i in tileCollection.indices {
+                if tileCollection[i].tag == i {
+                    print("Tile collection i tag is \(tileCollection[i].tag) and i = \(i)")
+                    continue
+                } else {
+                    solved = false
+                    break
+                }
+            }
+            
+            // if puzzle is solved congratulate user
+            if solved {
+                print("Game is solved, add code to show it")
+            }
         }
     }
 }
