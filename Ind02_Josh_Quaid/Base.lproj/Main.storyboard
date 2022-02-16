@@ -225,7 +225,6 @@
                     </view>
                     <connections>
                         <outlet property="hole" destination="Af6-ZH-nOb" id="6o8-x4-SWE"/>
-                        <outlet property="holeTGR" destination="wUz-TE-XS2" id="7pL-lh-TBQ"/>
                         <outlet property="shuffleButton" destination="4eB-LZ-0JQ" id="92T-Uw-tKO"/>
                         <outlet property="solutionButton" destination="52U-7W-vRH" id="hz8-i2-ppe"/>
                         <outletCollection property="tileCollection" destination="Af6-ZH-nOb" collectionClass="NSMutableArray" id="Xx9-me-ohx"/>

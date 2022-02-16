@@ -9,25 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    struct TileCoord{
-        var x: CGFloat
-        var y: CGFloat
-        
-        init(x: CGFloat, y: CGFloat) {
-            self.x = x
-            self.y = y
-        }
-    }
+    // Set up an array to store the default state of the tiles
     var defaultTileCoords: [CGRect] = []
+    // Set up an array to store the user state of the tiles
     var userTileCoords: [CGRect] = []
     
+    // The array that contails all of the tiles
     @IBOutlet var tileCollection: [UIImageView]!
+    // The outlet for the hole tile
     @IBOutlet weak var hole: UIImageView!
     
-    @IBOutlet var holeTGR: UITapGestureRecognizer!
-    
-    var holeInitCenter: CGPoint?
-    
+    // Set up a variable to store the index of the hole
+    var holeIndex : Int?
     
     // Button outlets
     @IBOutlet weak var solutionButton: UIButton!
@@ -38,12 +31,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        holeInitCenter = hole.center
+        // Initialize the holeIndex with index of hole
+        holeIndex = tileCollection.firstIndex(of: hole)
+
+        #warning("Testing 2d array")
+        var twoDTileArray : [[UIImageView]] = [[]]
         
+        // Create a copy of the default state of the tile frames
+        // for restoration
         for i in tileCollection.indices {
             defaultTileCoords.append(tileCollection[i].frame)
         }
 
+        // Shuffle the tiles to start the game
+        shuffleTiles(numMoves: Int.random(in: 10...25))
     }
 
     // Function for checking if a move is legal (tapped tile is
@@ -76,25 +77,68 @@ class ViewController: UIViewController {
     
     // Function to swap tiles. Calls isMoveLegal to verify before
     // proceeding
-    func swapTiles(tappedTile: UIImageView) -> Bool{
-        if isMoveLegal(tappedTile: tappedTile.self) {
-            // Set up a temporary variable to hold the tag
-            let tappedTag = tappedTile.self.tag
+    func swapTiles(tileToSwap: UIImageView) -> Bool{
+        // Get the index in tileCollection of tileToSwap
+        let indexOfTileToSwap = tileCollection.firstIndex(of: tileToSwap)!
+        
+        if isMoveLegal(tappedTile: tileToSwap.self) {
             // Set up a temporary variable to hold the frame
-            let tappedFrame = tappedTile.self.frame
+            let tappedFrame = tileToSwap.self.frame
             // Set the tapped tile's frame to the hole's frame
-            tappedTile.self.frame = hole.frame
-            // Set the tapped tile's tag to the hole's tag
-            tappedTile.self.tag = hole.tag
+            tileToSwap.self.frame = hole.frame
             // Set the hole's frame to the tapped frame
             hole.frame = tappedFrame
-            // Set the hole's tag to the tapped tag
-            hole.tag = tappedTag
+            
+            // Swap index positions of hole and tappedTile
+            tileCollection.swapAt(holeIndex!, indexOfTileToSwap)
 
+            // Update the index of the hole
+            holeIndex = indexOfTileToSwap
+            
             return true
         }
         // The tiles were not swapped due to an illegal move
         return false
+    }
+    
+    func shuffleTiles(numMoves: Int) {
+        // Base case to end recursion
+        if numMoves == 0 {
+            return
+        }
+        
+        // Unwrap holeIndex for use in the below code
+        guard let indexOfHole = holeIndex else { return }
+        
+        // Set up Bool for successful swap
+        var didSwap : Bool = false
+        
+        //Get a random number to select the direction of move
+        let dir = Int.random(in: 0...3)
+        print("num moves is \(numMoves) and dir is \(dir)")
+        
+        
+        if dir == 0 && indexOfHole - 4 > -1 {
+            print("Moving up")
+            didSwap = swapTiles(tileToSwap: tileCollection[indexOfHole - 4])
+        } else if dir == 1 && indexOfHole - 1 > -1{
+            print("moving left")
+            didSwap = swapTiles(tileToSwap: tileCollection[indexOfHole - 1])
+        } else if dir == 2 && indexOfHole + 1 < 20 {
+            print("moving rght")
+            didSwap = swapTiles(tileToSwap: tileCollection[indexOfHole + 1])
+        } else if dir == 3 && indexOfHole + 4 < 20 {
+            print("moving down")
+            didSwap = swapTiles(tileToSwap: tileCollection[indexOfHole + 4])
+        }
+        
+        // Call shuffleTiles recursively until done. If swap was good
+        // call shuffleTiles with 1 less move, else try again
+        if didSwap {
+            shuffleTiles(numMoves: numMoves - 1)
+        } else {
+            shuffleTiles(numMoves: numMoves)
+        }
     }
     
     // MARK: - Handlers
@@ -138,6 +182,7 @@ class ViewController: UIViewController {
         // calling shuffleTiles()
         if sender == shuffleButton {
             print("shuffle tapped, add code to shuffle tiles")
+            shuffleTiles(numMoves: Int.random(in: 10...25))
         }
     }
     
@@ -149,22 +194,28 @@ class ViewController: UIViewController {
         guard let tile = sender.view as? UIImageView else { return }
         
         // Create a boolean to store the result of the call to swapTiles
-        let tileDidMove : Bool = swapTiles(tappedTile: tile)
+        let tileDidMove : Bool = swapTiles(tileToSwap: tile)
         
         // If the tile was swapped, check if hole is in solved position,
         // if it isn't there is no need to check for the solution.
-        if tileDidMove && hole.center == holeInitCenter {
+        if tileDidMove && holeIndex == 0 {
             print("Hole is in solved position add code to check for solution")
             for view in tileCollection {
                 print(view.tag)
             }
             
+            // Check for a solved puzzle
+            // Set up a boolean for solved
             var solved : Bool = true
+            
+            // Iterate through the tileCollection and compare the tag to the index.
             for i in tileCollection.indices {
+                // If tag == index, keep checking
                 if tileCollection[i].tag == i {
                     print("Tile collection i tag is \(tileCollection[i].tag) and i = \(i)")
                     continue
                 } else {
+                    // Tag didn't match index so puzzle isn't solved. Stop checking.
                     solved = false
                     break
                 }
