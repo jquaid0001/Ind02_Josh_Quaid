@@ -13,6 +13,8 @@
 		DD74EFCD27AF65DD002D7CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD74EFCB27AF65DD002D7CB9 /* Main.storyboard */; };
 		DD74EFCF27AF65DE002D7CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD74EFCE27AF65DE002D7CB9 /* Assets.xcassets */; };
 		DD74EFD227AF65DE002D7CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD74EFD027AF65DE002D7CB9 /* LaunchScreen.storyboard */; };
+		DDD385A727C1F21F009119CB /* CongratView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD385A627C1F21F009119CB /* CongratView.swift */; };
+		DDD385AB27C296F4009119CB /* hercVid.MOV in Resources */ = {isa = PBXBuildFile; fileRef = DDD385AA27C296F4009119CB /* hercVid.MOV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		DD74EFCE27AF65DE002D7CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD74EFD127AF65DE002D7CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD74EFD327AF65DE002D7CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDD385A627C1F21F009119CB /* CongratView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratView.swift; sourceTree = "<group>"; };
+		DDD385AA27C296F4009119CB /* hercVid.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = hercVid.MOV; path = ../../../../../Downloads/hercVid.MOV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		DD74EFC427AF65DD002D7CB9 /* Ind02_Josh_Quaid */ = {
 			isa = PBXGroup;
 			children = (
+				DDD385AA27C296F4009119CB /* hercVid.MOV */,
 				DD74EFC527AF65DD002D7CB9 /* AppDelegate.swift */,
 				DD74EFC727AF65DD002D7CB9 /* SceneDelegate.swift */,
 				DD74EFC927AF65DD002D7CB9 /* ViewController.swift */,
+				DDD385A627C1F21F009119CB /* CongratView.swift */,
 				DD74EFCB27AF65DD002D7CB9 /* Main.storyboard */,
 				DD74EFCE27AF65DE002D7CB9 /* Assets.xcassets */,
 				DD74EFD027AF65DE002D7CB9 /* LaunchScreen.storyboard */,
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD385AB27C296F4009119CB /* hercVid.MOV in Resources */,
 				DD74EFD227AF65DE002D7CB9 /* LaunchScreen.storyboard in Resources */,
 				DD74EFCF27AF65DE002D7CB9 /* Assets.xcassets in Resources */,
 				DD74EFCD27AF65DD002D7CB9 /* Main.storyboard in Resources */,
@@ -139,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD74EFCA27AF65DD002D7CB9 /* ViewController.swift in Sources */,
+				DDD385A727C1F21F009119CB /* CongratView.swift in Sources */,
 				DD74EFC627AF65DD002D7CB9 /* AppDelegate.swift in Sources */,
 				DD74EFC827AF65DD002D7CB9 /* SceneDelegate.swift in Sources */,
 			);
