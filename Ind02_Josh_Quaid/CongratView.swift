@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+// Import needed AV for playing a video
 import AVKit
 import AVFoundation
 
@@ -13,7 +15,7 @@ class CongratView: UIViewController {
 
     @IBOutlet weak var playAgainButton: UIButton!
 
-
+    // Setup a var for holding the button label for unwinding
     var buttonText = ""
     
     override func viewDidLoad() {
@@ -30,43 +32,28 @@ class CongratView: UIViewController {
         }
         
         // Video player setup and playback
+        // Create an AVPlayer with the URL created previously
         let vidPlayer = AVPlayer(url: videoSourceURL)
+        // Create an AVPlayerLayer to display the video
         let videoLayer = AVPlayerLayer(player: vidPlayer)
+        // Add the videoLay to the view
         view.layer.addSublayer(videoLayer)
+        // Set the videoLayer's frame size and position
         videoLayer.frame = CGRect(x: 20.0, y: 154.0, width: 374.0, height: 544.0)
+        
+        // Play the video automatically
         vidPlayer.play()
         
     }
-    
-   /* override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // MARK: - Video Player
-        
-        guard let videoSourceURL = Bundle.main.url(forResource: "hercVid", withExtension: "MOV")
-        else {
-            print("Cannot find video file")
-            return
-        }
-        
-        // Video player setup and playback
-        let vidPlayer = AVPlayer(url: videoSourceURL)
-        let videoLayer = AVPlayerLayer(player: vidPlayer)
-        view.layer.addSublayer(videoLayer)
-        videoLayer.frame = CGRect(x: 20.0, y: 154.0, width: 374.0, height: 544.0)
-        vidPlayer.play()
-    }
-    */
 
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Set buttonText to the label of the pressed button
         if let buttonPressed = sender as? UIButton {
             buttonText = (buttonPressed.titleLabel?.text)!
-            print("button text is now \(buttonText)")
         }
     }
 }

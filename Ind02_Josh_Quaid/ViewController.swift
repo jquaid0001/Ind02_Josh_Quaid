@@ -36,9 +36,12 @@ class ViewController: UIViewController {
         }
     }
 
+    // MARK: - Functions
+    
     // Function for checking if a move is legal (tapped tile is
     // adjacent to the hole)
     func isMoveLegal(tappedTile: UIImageView) -> Bool {
+        // Grab the properties of the tapped tile and hole for quick operations
         let originX = tappedTile.frame.origin.x
         let originY = tappedTile.frame.origin.y
         let holeX = hole.frame.origin.x
@@ -46,8 +49,10 @@ class ViewController: UIViewController {
 
         // Tiles are on the same column, check up and down
         if originX == holeX {
+            // if true, hole can move up
             if originY - 93 == holeY {
                 return true
+            // if true, hole can move down
             } else if originY + 93 == holeY {
                 return true
             }
@@ -55,8 +60,10 @@ class ViewController: UIViewController {
         
         // Tiles are on the same row, check left and right
         if originY == holeY {
+            // if true, hole can move left
             if originX - 93 == holeX {
                 return true
+            // if true, hole can move right
             } else if originX + 93 == holeX {
                 return true
             }
@@ -67,7 +74,7 @@ class ViewController: UIViewController {
     // Function to swap tiles. Calls isMoveLegal to verify before
     // proceeding
     func swapTiles(tileToSwap: UIImageView) -> Bool{
-        //print("Index of tileToSwap is \(tileCollection.firstIndex(of: tileToSwap))")
+        // Check if move is legal before proceeding
         if isMoveLegal(tappedTile: tileToSwap.self) {
             // Set up a temporary variable to hold the frame
             let tappedFrame = tileToSwap.self.frame
@@ -101,21 +108,20 @@ class ViewController: UIViewController {
         
         // While loop to continue moving until numMoves = 0
         while remainingMoves > 0 {
+            // Grab a random direction
             dir = Int.random(in: 0...3)
             didSwap = false
             
-            #warning("Clean this up by putting the second condition inside of the ifs")
-            if dir == 0 && canMoveUp {
-                if hole.frame.origin.y > 169 {
-                    // Moving down after moving up is dumb, block it
-                    canMoveDown = false
-                    // Allow moving left and right if blocked
-                    canMoveLeft = true; canMoveRight = true
-                    didSwap = swapTiles(tileToSwap: tileCollection[
-                        tileCollection.firstIndex(where: {$0.tag == hole.tag - 4})!
-                        ])
-                }
-            } else if dir == 1 && hole.frame.origin.x > 21 && canMoveLeft {
+            if dir == 0 && canMoveUp && hole.frame.origin.y > 169 {
+                // Moving down after moving up is dumb, block it
+                canMoveDown = false
+                // Allow moving left and right if blocked
+                canMoveLeft = true; canMoveRight = true
+                // Call swapTiles and store the result in didSwap
+                didSwap = swapTiles(tileToSwap: tileCollection[
+                    tileCollection.firstIndex(where: {$0.tag == hole.tag - 4})!
+                    ])
+            } else if dir == 1 && canMoveLeft && hole.frame.origin.x > 21 {
                 // Moving right after moving left is dumb, block it
                 canMoveRight = false
                 // Allow moving up and down if blocked
@@ -123,14 +129,14 @@ class ViewController: UIViewController {
                 didSwap = swapTiles(tileToSwap: tileCollection[
                     tileCollection.firstIndex(where: {$0.tag == hole.tag - 1})!
                     ])
-            } else if dir == 2 && hole.frame.origin.x < 300 && canMoveRight{
+            } else if dir == 2 && canMoveRight && hole.frame.origin.x < 300 {
                 // You get the picture from the previous
                 canMoveLeft = false
                 canMoveUp = true; canMoveDown = true
                 didSwap = swapTiles(tileToSwap: tileCollection[
                     tileCollection.firstIndex(where: {$0.tag == hole.tag + 1})!
                     ])
-            } else if dir == 3 && hole.frame.origin.y < 541 && canMoveDown {
+            } else if dir == 3 && canMoveDown  && hole.frame.origin.y < 541 {
                 // See previous dumb statement...
                 canMoveUp = false
                 canMoveLeft = true; canMoveRight = true
@@ -139,13 +145,13 @@ class ViewController: UIViewController {
                     ])
             }
             
-            // Call shuffleTiles recursively until done. If swap was good
-            // call shuffleTiles with 1 less move, else try again
+            // if swap was good, decrement reamining moves, else try again
             if didSwap {
                 remainingMoves -= 1
             }
         }
     }
+    
     
     // MARK: - Handlers
     
@@ -154,6 +160,7 @@ class ViewController: UIViewController {
         if sender == solutionButton {
             guard let buttonText = sender.titleLabel?.text else { return }
             
+            // If Show Answer is tapped, back up the user state and restore the solved state of the tiles
             if buttonText == "Show Answer" {
                 // If userTileCoords has an elements from
                 // previous button taps, clear them out
@@ -173,9 +180,8 @@ class ViewController: UIViewController {
                 
                 // Set the button's text to Hide Answer
                 sender.setTitle("Hide Answer", for: .normal)
-                // Disable the shuffle button
+                // Disable the shuffle button, can't shuffle when answer is shown
                 shuffleButton.isEnabled = false
-                
             } else {
                 // Restore the userTileCoors array to restore
                 // the user state
@@ -188,8 +194,8 @@ class ViewController: UIViewController {
                 shuffleButton.isEnabled = true
             }
         }
-        // If sender is shuffleButton shuffle the tiles by
-        // calling shuffleTiles()
+        
+        // If sender is shuffleButton shuffle the tiles by calling shuffleTiles()
         if sender == shuffleButton {
             // Call shuffleTiles with a random number between 10 and 25
             shuffleTiles(numMoves: Int.random(in: 10...25))

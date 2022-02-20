@@ -359,7 +359,7 @@
         <!--Congrat View-->
         <scene sceneID="MDI-OR-r28">
             <objects>
-                <viewController restorationIdentifier="congratsView" id="llJ-Xq-Cpe" customClass="CongratView" customModule="Ind02_Josh_Quaid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="congratsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="llJ-Xq-Cpe" customClass="CongratView" customModule="Ind02_Josh_Quaid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="congratsView" id="gTA-pg-pWX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
