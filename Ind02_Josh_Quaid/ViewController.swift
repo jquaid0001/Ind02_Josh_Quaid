@@ -9,6 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // Set up a var to hold the bounds of the UIImageView
+    var xMin : CGFloat!
+    var yMin : CGFloat!
+    var xMax : CGFloat!
+    var yMax : CGFloat!
     // Set up an array to store the default state of the tiles
     var solvedTilePositions: [CGRect] = []
     // Set up an array to store the user state of the tiles for backup
@@ -34,6 +39,12 @@ class ViewController: UIViewController {
         for i in tileCollection.indices {
             solvedTilePositions.append(tileCollection[i].frame)
         }
+        
+        // Init bound vars
+        xMin = hole.frame.origin.x
+        xMax = xMin + (93 * 3)
+        yMin = hole.frame.origin.y
+        yMax = yMin + (93 * 4)
     }
 
     // MARK: - Functions
@@ -112,7 +123,7 @@ class ViewController: UIViewController {
             dir = Int.random(in: 0...3)
             didSwap = false
             
-            if dir == 0 && canMoveUp && hole.frame.origin.y > 169 {
+            if dir == 0 && canMoveUp && hole.frame.origin.y > yMin {
                 // Moving down after moving up is dumb, block it
                 canMoveDown = false
                 // Allow moving left and right if blocked
@@ -121,7 +132,7 @@ class ViewController: UIViewController {
                 didSwap = swapTiles(tileToSwap: tileCollection[
                     tileCollection.firstIndex(where: {$0.tag == hole.tag - 4})!
                     ])
-            } else if dir == 1 && canMoveLeft && hole.frame.origin.x > 21 {
+            } else if dir == 1 && canMoveLeft && hole.frame.origin.x > xMin {
                 // Moving right after moving left is dumb, block it
                 canMoveRight = false
                 // Allow moving up and down if blocked
@@ -129,14 +140,14 @@ class ViewController: UIViewController {
                 didSwap = swapTiles(tileToSwap: tileCollection[
                     tileCollection.firstIndex(where: {$0.tag == hole.tag - 1})!
                     ])
-            } else if dir == 2 && canMoveRight && hole.frame.origin.x < 300 {
+            } else if dir == 2 && canMoveRight && hole.frame.origin.x < xMax {
                 // You get the picture from the previous
                 canMoveLeft = false
                 canMoveUp = true; canMoveDown = true
                 didSwap = swapTiles(tileToSwap: tileCollection[
                     tileCollection.firstIndex(where: {$0.tag == hole.tag + 1})!
                     ])
-            } else if dir == 3 && canMoveDown  && hole.frame.origin.y < 541 {
+            } else if dir == 3 && canMoveDown  && hole.frame.origin.y < yMax {
                 // See previous dumb statement...
                 canMoveUp = false
                 canMoveLeft = true; canMoveRight = true
